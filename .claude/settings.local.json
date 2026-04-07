@@ -16,7 +16,8 @@
       "mcp__figma__get_figma_data",
       "mcp__figma__download_figma_images",
       "Bash(git init:*)",
-      "Bash(git -C \"/Users/mariasokolova/Desktop/Биографика\" status -u)"
+      "Bash(git -C \"/Users/mariasokolova/Desktop/Биографика\" status -u)",
+      "Bash(brew install:*)"
     ]
   }
 }
