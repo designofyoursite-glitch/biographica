@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls /Users/mariasokolova/Desktop/Биографика/assets/arrow*)",
+      "Bash(ls /Users/mariasokolova/Desktop/Биографика/assets/bg1*)",
+      "Bash(ls /Users/mariasokolova/Desktop/Биографика/assets/masha*)",
+      "Bash(ls /Users/mariasokolova/Desktop/Биографика/assets/*circle* /Users/mariasokolova/Desktop/Биографика/assets/*dot* /Users/mariasokolova/Desktop/Биографика/assets/*line*)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/8c0b66fa-4176-43cf-b464-d56b577d13d6\" -o /Users/mariasokolova/Desktop/Биографика/assets/union.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/52d9ca2d-f847-429c-8452-3988fcb73a03\" -o /Users/mariasokolova/Desktop/Биографика/assets/arrow-down-sm.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/bc522e35-a532-437a-ad8c-2f5f8f84ff57\" -o /Users/mariasokolova/Desktop/Биографика/assets/arrow-right-long.svg)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/8f9a701b-870f-49c4-b356-21fde1b06472\" -o \"/Users/mariasokolova/Desktop/Биографика/assets/arrow-circle-right.svg\")",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/41baefcc-c7ae-465d-83ed-90915ce18ce4\" -o \"/Users/mariasokolova/Desktop/Биографика/assets/arrow-circle-left.svg\")",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/acc59a87-6080-44c7-98c1-06a714ecce16\" -o \"/Users/mariasokolova/Desktop/Биографика/assets/demid.jpg\")",
+      "Bash(ls /Users/mariasokolova/Desktop/Биографика/assets/bg-red*)",
+      "mcp__figma__get_figma_data",
+      "mcp__figma__download_figma_images",
+      "Bash(git init:*)",
+      "Bash(git -C \"/Users/mariasokolova/Desktop/Биографика\" status -u)"
+    ]
+  }
+}

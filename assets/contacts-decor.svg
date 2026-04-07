@@ -1,0 +1,14 @@
+<svg width="599" height="399" viewBox="0 0 599 399" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M197.721 339.668C275.593 339.668 338.721 276.764 338.721 199.168C338.721 121.572 275.593 58.668 197.721 58.668" stroke="white" stroke-opacity="0.3"/>
+<path d="M198.721 339.668C120.849 339.668 57.7207 276.764 57.7207 199.168C57.7207 121.572 120.849 58.668 198.721 58.668" stroke="white" stroke-opacity="0.3"/>
+<circle cx="2.96405" cy="2.96405" r="2.96405" transform="matrix(-1 0 0 1 201.721 97.668)" fill="white" fill-opacity="0.75"/>
+<circle cx="2.96405" cy="2.96405" r="2.96405" transform="matrix(-1 0 0 1 201.928 196.354)" fill="white" fill-opacity="0.75"/>
+<circle cx="2.96405" cy="2.96405" r="2.96405" transform="matrix(-1 0 0 1 201.721 295.668)" fill="white" fill-opacity="0.75"/>
+<circle cx="41" cy="41" r="40.5" transform="matrix(-1 0 0 1 239.721 58.668)" stroke="white" stroke-opacity="0.75"/>
+<circle cx="59" cy="59" r="58.5" transform="matrix(-1 0 0 1 258 140.354)" stroke="white" stroke-opacity="0.75"/>
+<circle cx="41" cy="41" r="40.5" transform="matrix(-1 0 0 1 239.721 257.668)" stroke="white" stroke-opacity="0.75"/>
+<path d="M198.86 0.353516L397.721 199.214L198.86 398.074" stroke="white" stroke-opacity="0.3"/>
+<rect x="-0.5" y="0.5" width="197" height="197" transform="matrix(-1 0 0 1 296.721 100.668)" stroke="#BCBCBC" stroke-opacity="0.75" stroke-dasharray="1 5"/>
+<line x1="599" y1="199.854" x2="298" y2="199.854" stroke="white" stroke-opacity="0.75" stroke-dasharray="1 4"/>
+<line x1="298" y1="199.854" x2="-4.37114e-08" y2="199.853" stroke="#BCBCBC" stroke-opacity="0.75" stroke-dasharray="1 4"/>
+</svg>

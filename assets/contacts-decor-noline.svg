@@ -1,0 +1,59 @@
+<svg width="599" height="399" viewBox="0 0 599 399" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  .draw { stroke-dasharray: 900; stroke-dashoffset: 900; animation: drawIn 3s ease forwards; }
+  .draw2 { stroke-dasharray: 900; stroke-dashoffset: 900; animation: drawIn 3s ease 0.5s forwards; }
+  .circle-sm { stroke-dasharray: 260; stroke-dashoffset: 260; animation: drawIn 2s ease 1s forwards; }
+  .circle-md { stroke-dasharray: 380; stroke-dashoffset: 380; animation: drawIn 2.5s ease 0.8s forwards; }
+  .circle-lg { stroke-dasharray: 260; stroke-dashoffset: 260; animation: drawIn 2s ease 1.2s forwards; }
+  .triangle { stroke-dasharray: 800; stroke-dashoffset: 800; animation: drawIn 3s ease 0.3s forwards; }
+  .sq { stroke-dasharray: 800; stroke-dashoffset: 800; animation: drawIn 3.5s ease 1.5s forwards; }
+  .sq-wrap { transform-origin: 198px 199px; animation: spinSlow 90s linear infinite; }
+
+  .dot { opacity: 0; animation: fadeInDot 0.5s ease forwards; }
+  .dot1 { animation-delay: 1.8s; }
+  .dot2 { animation-delay: 2.2s; }
+  .dot3 { animation-delay: 2.6s; }
+
+  .dot-pulse { animation: pulse 3s ease-in-out infinite; }
+  .dot-pulse2 { animation: pulse 3s ease-in-out 1s infinite; }
+  .dot-pulse3 { animation: pulse 3s ease-in-out 2s infinite; }
+
+  @keyframes drawIn {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes fadeInDot {
+    to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { r: 2.96; opacity: 0.75; }
+    50% { r: 4.5; opacity: 1; }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<!-- Large circle - left half -->
+<path class="draw" d="M197.721 339.668C275.593 339.668 338.721 276.764 338.721 199.168C338.721 121.572 275.593 58.668 197.721 58.668" stroke="white" stroke-opacity="0.3"/>
+<!-- Large circle - right half -->
+<path class="draw2" d="M198.721 339.668C120.849 339.668 57.7207 276.764 57.7207 199.168C57.7207 121.572 120.849 58.668 198.721 58.668" stroke="white" stroke-opacity="0.3"/>
+
+<!-- Dots with pulse -->
+<circle class="dot dot1 dot-pulse" cx="198.757" cy="100.632" r="2.96405" fill="white" fill-opacity="0.75"/>
+<circle class="dot dot2 dot-pulse2" cx="198.964" cy="199.318" r="2.96405" fill="white" fill-opacity="0.75"/>
+<circle class="dot dot3 dot-pulse3" cx="198.757" cy="298.632" r="2.96405" fill="white" fill-opacity="0.75"/>
+
+<!-- Small circles (top, middle, bottom) -->
+<circle class="circle-sm" cx="198.721" cy="99.668" r="40.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+<circle class="circle-md" cx="199" cy="199.354" r="58.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+<circle class="circle-lg" cx="198.721" cy="298.668" r="40.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+
+<!-- Half diamond (triangle) -->
+<path class="triangle" d="M198.86 0.353516L397.721 199.214L198.86 398.074" stroke="white" stroke-opacity="0.3"/>
+
+<!-- Dotted square - slowly rotating -->
+<g class="sq-wrap">
+  <rect class="sq" x="-0.5" y="0.5" width="197" height="197" transform="matrix(-1 0 0 1 296.721 100.668)" stroke="#BCBCBC" stroke-opacity="0.75" stroke-dasharray="1 5" fill="none"/>
+</g>
+</svg>

@@ -1,0 +1,12 @@
+<svg width="292" height="250" viewBox="0 0 292 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.726 103.127C42.726 160.008 88.8375 206.12 145.719 206.12C202.6 206.12 248.712 160.008 248.712 103.127" stroke="white" stroke-opacity="0.3"/>
+<path d="M42.726 103.493C42.726 46.6115 88.8375 0.500049 145.719 0.50005C202.6 0.50005 248.712 46.6115 248.712 103.493" stroke="white" stroke-opacity="0.3"/>
+<circle cx="2.1687" cy="2.1687" r="2.1687" transform="matrix(0 -1.0001 -1.0001 -1.19261e-08 220.174 105.871)" fill="white" fill-opacity="0.75"/>
+<circle cx="2.1687" cy="2.1687" r="2.1687" transform="matrix(0 -1.0001 -1.0001 -1.19261e-08 147.961 106.023)" fill="white" fill-opacity="0.75"/>
+<circle cx="2.1687" cy="2.1687" r="2.1687" transform="matrix(0 -1.0001 -1.0001 -1.19261e-08 75.2889 105.871)" fill="white" fill-opacity="0.75"/>
+<circle cx="29.9984" cy="29.9984" r="29.4984" transform="matrix(0 -1.0001 -1.0001 -1.19261e-08 248.712 133.677)" stroke="white" stroke-opacity="0.75"/>
+<circle cx="43.1685" cy="43.1685" r="42.6685" transform="matrix(1.19261e-08 -1.0001 -1.0001 -1.19261e-08 188.939 147.054)" stroke="white" stroke-opacity="0.75"/>
+<circle cx="29.9984" cy="29.9984" r="29.4984" transform="matrix(0 -1.0001 -1.0001 -1.19261e-08 103.095 133.677)" stroke="white" stroke-opacity="0.75"/>
+<path d="M291.383 103.778L145.868 249.293L0.353536 103.778" stroke="white" stroke-opacity="0.3"/>
+<rect x="-0.500051" y="-0.500051" width="143.871" height="143.871" transform="matrix(1.19261e-08 -1.0001 -1.0001 -1.19261e-08 216.978 175.118)" stroke="#BCBCBC" stroke-opacity="0.75" stroke-dasharray="1 5"/>
+</svg>

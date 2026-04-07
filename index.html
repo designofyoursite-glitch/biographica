@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Биографика</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Unbounded:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="siteHeader" role="banner">
+      <div class="siteHeader__inner container">
+        <div class="siteHeader__desktop">
+          <button
+            class="soundToggle js-soundToggle"
+            type="button"
+            aria-label="Включить звук"
+            aria-pressed="false"
+          >
+            <svg
+              class="soundIcon soundIcon--sm"
+              viewBox="0 0 25 25"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                class="soundIcon__ring"
+                d="M24.5 12.5C24.5 19.1274 19.1274 24.5 12.5 24.5C5.87258 24.5 0.5 19.1274 0.499999 12.5C0.5 5.87258 5.87258 0.5 12.5 0.500001C19.1274 0.500002 24.5 5.87259 24.5 12.5Z"
+              />
+              <g class="soundIcon__bars">
+                <rect class="soundIcon__bar soundIcon__bar--1" x="8" y="9" width="2" height="7" rx="1" />
+                <rect class="soundIcon__bar soundIcon__bar--2" x="11.5" y="7.5" width="2" height="10" rx="1" />
+                <rect class="soundIcon__bar soundIcon__bar--3" x="15" y="9.5" width="2" height="6" rx="1" />
+              </g>
+            </svg>
+          </button>
+
+          <a class="siteHeader__logo" href="#" aria-label="Биографика">
+            <img
+              src="./assets/logo.svg"
+              alt="Биографика"
+            />
+          </a>
+
+          <a class="siteHeader__cta" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
+        </div>
+
+        <div class="siteHeader__mobile" aria-label="Мобильное меню">
+          <a class="siteHeader__logo siteHeader__logo--mobile" href="#" aria-label="Биографика">
+            <img
+              src="./assets/logo.svg"
+              alt="Биографика"
+            />
+          </a>
+
+          <div class="siteHeader__mobileIcons">
+            <button class="iconBtn iconBtn--menu" type="button" aria-label="Открыть меню">
+              <img
+                src="./assets/Group%2021.svg"
+                alt=""
+                width="25"
+                height="25"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fixed navigation — desktop only -->
+    <nav class="sideNav" aria-label="Навигация по разделам">
+      <a href="#about" class="sideNav__item"><span class="sideNav__num">01</span><span class="sideNav__label">о&nbsp;методе</span></a>
+      <a href="#author" class="sideNav__item"><span class="sideNav__num">02</span><span class="sideNav__label">автор метода</span></a>
+      <a href="#target" class="sideNav__item"><span class="sideNav__num">03</span><span class="sideNav__label">для&nbsp;кого</span></a>
+      <a href="#process" class="sideNav__item"><span class="sideNav__num">04</span><span class="sideNav__label">процесс работы</span></a>
+      <a href="#result" class="sideNav__item"><span class="sideNav__num">05</span><span class="sideNav__label">результат</span></a>
+      <a href="#example" class="sideNav__item"><span class="sideNav__num">06</span><span class="sideNav__label">пример</span></a>
+      <a href="#formats" class="sideNav__item"><span class="sideNav__num">07</span><span class="sideNav__label">форматы работы</span></a>
+      <a href="#faq" class="sideNav__item"><span class="sideNav__num">08</span><span class="sideNav__label">faq</span></a>
+    </nav>
+
+    <!-- Burger overlay — mobile -->
+    <div class="burgerOverlay js-burgerOverlay" aria-hidden="true">
+      <div class="burgerOverlay__inner">
+        <button class="burgerOverlay__close js-burgerClose" type="button" aria-label="Закрыть меню">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1" y1="1" x2="19" y2="19" stroke="white" stroke-width="1.5"/>
+            <line x1="19" y1="1" x2="1" y2="19" stroke="white" stroke-width="1.5"/>
+          </svg>
+        </button>
+
+        <div class="burgerOverlay__logo">
+          <img src="./assets/logo.svg" alt="Биографика" />
+        </div>
+
+        <nav class="burgerOverlay__nav" aria-label="Мобильное меню">
+          <a href="#about" class="burgerOverlay__item"><span class="burgerOverlay__num">01</span><span class="burgerOverlay__label">о&nbsp;методе</span></a>
+          <a href="#author" class="burgerOverlay__item"><span class="burgerOverlay__num">02</span><span class="burgerOverlay__label">автор метода</span></a>
+          <a href="#target" class="burgerOverlay__item"><span class="burgerOverlay__num">03</span><span class="burgerOverlay__label">для&nbsp;кого</span></a>
+          <a href="#process" class="burgerOverlay__item"><span class="burgerOverlay__num">04</span><span class="burgerOverlay__label">процесс работы</span></a>
+          <a href="#result" class="burgerOverlay__item"><span class="burgerOverlay__num">05</span><span class="burgerOverlay__label">результат</span></a>
+          <a href="#example" class="burgerOverlay__item"><span class="burgerOverlay__num">06</span><span class="burgerOverlay__label">пример</span></a>
+          <a href="#formats" class="burgerOverlay__item"><span class="burgerOverlay__num">07</span><span class="burgerOverlay__label">форматы работы</span></a>
+          <a href="#faq" class="burgerOverlay__item"><span class="burgerOverlay__num">08</span><span class="burgerOverlay__label">faq</span></a>
+        </nav>
+
+        <div class="burgerOverlay__bottom">
+          <a class="btn btn--outline burgerOverlay__cta" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
+          <div class="burgerOverlay__socials">
+            <a class="burgerOverlay__social" href="#" aria-label="Telegram">
+              <img src="./assets/social-tg.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="burgerOverlay__social" href="#" aria-label="WhatsApp">
+              <img src="./assets/social-wa.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="burgerOverlay__social" href="#" aria-label="Email">
+              <img src="./assets/social-email.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="burgerOverlay__social" href="#" aria-label="Сайт">
+              <img src="./assets/social-web.svg" alt="" width="30" height="30" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <section class="hero" aria-label="От человека к пространству">
+        <div class="hero__video" aria-hidden="true">
+          <iframe
+            id="heroVideo"
+            class="hero__video-iframe hero__video-iframe--bg"
+            src="https://player.vimeo.com/video/1170605202?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&title=0&byline=0&portrait=0"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <button
+          class="iconBtn hero__soundFloating js-soundToggle"
+          type="button"
+          aria-label="Включить звук"
+          aria-pressed="false"
+        >
+          <svg
+            class="soundIcon soundIcon--lg"
+            viewBox="0 0 25 25"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              class="soundIcon__ring"
+              d="M24.5 12.5C24.5 19.1274 19.1274 24.5 12.5 24.5C5.87258 24.5 0.5 19.1274 0.499999 12.5C0.5 5.87258 5.87258 0.5 12.5 0.500001C19.1274 0.500002 24.5 5.87259 24.5 12.5Z"
+            />
+            <g class="soundIcon__bars">
+              <rect class="soundIcon__bar soundIcon__bar--1" x="8" y="9" width="2" height="7" rx="1" />
+              <rect class="soundIcon__bar soundIcon__bar--2" x="11.5" y="7.5" width="2" height="10" rx="1" />
+              <rect class="soundIcon__bar soundIcon__bar--3" x="15" y="9.5" width="2" height="6" rx="1" />
+            </g>
+          </svg>
+        </button>
+
+        <div class="hero__content">
+          <div class="container">
+            <div class="hero__media" aria-hidden="true">
+              <div class="hero__mediaFrame">
+                <iframe
+                  id="heroVideoPreview"
+                  class="hero__video-iframe hero__video-iframe--preview"
+                  src="https://player.vimeo.com/video/1170605202?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&title=0&byline=0&portrait=0"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <h1 class="hero__title">
+              <span class="hero__titleLine">От&nbsp;человека</span>
+              <span class="hero__titleLine">к&nbsp;пространству</span>
+            </h1>
+
+            <div class="hero__right">
+              <p class="hero__desc">
+                Метод, который устанавливает связь человека и&nbsp;интерьера. Открывает твою
+                исключительность и&nbsp;становится базой для&nbsp;проектирования твоей будущей
+                жизненной среды.
+              </p>
+
+              <div class="hero__actions" role="group" aria-label="Действия">
+                <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
+                <a class="btn btn--outline" href="#">Познакомиться с&nbsp;методом</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fixed background layers for sections 4–8 -->
+      <div class="bgLayer bgLayer--base" aria-hidden="true"></div>
+      <div class="bgLayer bgLayer--red" aria-hidden="true"></div>
+
+      <section class="about" id="about">
+        <p class="about__lead">
+          БИОГРАФИКА ≠ дизайн интерьера. Это&nbsp;не проектирование. Это
+          исследование личности. Как&nbsp;ты чувствуешь, мыслишь, действуешь.
+          Исследование твоей аутентичности для&nbsp;создания будущей реальности, в
+          которой ты&nbsp;счастлив.
+        </p>
+
+        <div class="about__scrollWrap">
+          <div class="about__track">
+            <!-- Snap targets for scroll-snap -->
+            <div class="about__snapTarget about__snapTarget--1" aria-hidden="true"></div>
+            <div class="about__snapTarget about__snapTarget--2" aria-hidden="true"></div>
+            <div class="about__snapTarget about__snapTarget--3" aria-hidden="true"></div>
+            <div class="about__snapTarget about__snapTarget--4" aria-hidden="true"></div>
+            <div class="about__snapTarget about__snapTarget--5" aria-hidden="true"></div>
+            <div class="about__curveWrap" aria-hidden="true">
+              <img
+                class="about__curve"
+                src="./assets/curve-line.svg"
+                alt=""
+              />
+            </div>
+
+            <div class="about__point about__point--1">
+              <img src="./assets/circle-point.svg" alt="" />
+              <span>1</span>
+            </div>
+            <div class="about__point about__point--2">
+              <img src="./assets/circle-point.svg" alt="" />
+              <span>2</span>
+            </div>
+            <div class="about__point about__point--3">
+              <img src="./assets/circle-point.svg" alt="" />
+              <span>3</span>
+            </div>
+            <div class="about__point about__point--4">
+              <img src="./assets/circle-point.svg" alt="" />
+              <span>4</span>
+            </div>
+            <div class="about__point about__point--5">
+              <img src="./assets/circle-point.svg" alt="" />
+              <span>5</span>
+            </div>
+
+            <div class="about__card about__card--1">
+              <h3 class="about__card-title">фокус на&nbsp;человеке</h3>
+              <div class="about__card-text">
+                <p>Ты&nbsp;— центр исследования.</p>
+                <p>
+                  Твои привычки, образ жизни, опыт, интуитивные и&nbsp;рациональные
+                  выборы собираются в&nbsp;цельную систему.
+                </p>
+              </div>
+            </div>
+
+            <div class="about__card about__card--2">
+              <h3 class="about__card-title">Индивидуальность</h3>
+              <p class="about__card-text">
+                Нет шаблонов. Каждый результат уникален, как&nbsp;отпечаток личности.
+                Биографика отражает твой внутренний код.
+              </p>
+            </div>
+
+            <div class="about__card about__card--3">
+              <h3 class="about__card-title">Интегративность</h3>
+              <p class="about__card-text">
+                Метод объединяет: дизайн, функциональность, психологию личности,
+                культуру, эстетику, телесность, художественные смыслы,
+                повседневные ритуалы
+              </p>
+            </div>
+
+            <div class="about__card about__card--4">
+              <h3 class="about__card-title">Практичность</h3>
+              <p class="about__card-text">
+                Исследование не&nbsp;ради исследования. Оно создает основу, на
+                которой интерьер будет жить и&nbsp;оставаться актуальным спустя многие
+                годы. Этот этап экономит время и&nbsp;средства, исключая ошибки и
+                лишние расходы в&nbsp;проектировании.
+              </p>
+            </div>
+
+            <div class="about__card about__card--5">
+              <h3 class="about__card-title">Честность и&nbsp;легкость</h3>
+              <div class="about__card-text">
+                <p>Без&nbsp;давления и&nbsp;клише.</p>
+                <p>
+                  Погружение происходит естественно – с&nbsp;уважением, поддержкой, в
+                  диалоге и&nbsp;сотрудничестве.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__swipeHint">
+          <span>листай</span>
+          <img src="./assets/arrow-white.svg" alt="" aria-hidden="true" />
+        </div>
+      </section>
+
+      <section class="author" id="author">
+        <div class="author__bg">
+          <img class="author__bgImg" src="./assets/masha-1.jpg" alt="" />
+          <div class="author__bgGradient" aria-hidden="true"></div>
+        </div>
+
+        <div class="author__top">
+          <span class="author__label">АВТОР МЕТОДА</span>
+          <h2 class="author__name">МАРИЯ ЛЫСАК</h2>
+          <div class="author__desc">
+            <p>За&nbsp;годы практики я&nbsp;выявила повторяющуюся закономерность: проектирование начинается с&nbsp;формы, а&nbsp;человек остаётся за&nbsp;пределами системы. В&nbsp;итоге интерьер может быть эстетичным, но&nbsp;не&nbsp;совпадать с&nbsp;образом жизни хозяина.</p>
+            <p>Так появился метод «БиоГрафика» — это&nbsp;этап стратегического определения принципов будущего интерьера. Он&nbsp;позволяет принимать точные решения на&nbsp;уровне планировки, сценариев жизни и&nbsp;визуального языка — еще до&nbsp;создания дизайн-проекта — на&nbsp;что&nbsp;можно опираться годами.</p>
+          </div>
+          <div class="author__actions">
+            <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
+            <a class="btn btn--outline" href="#">Смотреть форматы</a>
+          </div>
+        </div>
+
+        <div class="author__bottom">
+          <h2 class="author__subtitle">БИОГРАФИКА СОЗДАЕТ БАЗУ ДЛЯ&nbsp;ДИЗАЙНА</h2>
+          <div class="author__subdesc">
+            <p>Я&nbsp;не&nbsp;вписываю тебя в&nbsp;существующие тренды, а&nbsp;помогаю создать свой. Это&nbsp;дает возможность не&nbsp;ограничивать себя рамками, а&nbsp;наоборот расширить диапазон видения, добавить творчества и&nbsp;реализовать свои желания внутри твоего бюджета.</p>
+          </div>
+        </div>
+
+        <div class="author__circles">
+          <div class="author__circle author__circle--1">
+            <span class="author__circleNum">01</span>
+            <div class="author__circleRing--dotted"></div>
+            <svg class="author__circleDots" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path id="circPath1" d="M150,30 A120,120 0 1,1 149.99,30 Z" fill="none" stroke="none"/>
+              <circle r="2" fill="white">
+                <animateMotion dur="10s" repeatCount="indefinite">
+                  <mpath href="#circPath1"/>
+                </animateMotion>
+              </circle>
+              <circle r="2" fill="white">
+                <animateMotion dur="15s" repeatCount="indefinite" begin="-5s">
+                  <mpath href="#circPath1"/>
+                </animateMotion>
+              </circle>
+              <circle r="2" fill="white">
+                <animateMotion dur="20s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+                  <mpath href="#circPath1"/>
+                </animateMotion>
+              </circle>
+              <circle r="2" fill="white">
+                <animateMotion dur="12s" repeatCount="indefinite" begin="-4s">
+                  <mpath href="#circPath1"/>
+                </animateMotion>
+              </circle>
+            </svg>
+            <div class="author__circleSphere"></div>
+            <div class="author__circleContent">
+              <img class="author__circleLogo" src="./assets/logo.svg" alt="Биографика" />
+              <p class="author__circleDesc">Первый и&nbsp;самый важный этап перед проектированием. Создаёт фундамент, на&nbsp;который опираются последующие шаги</p>
+            </div>
+          </div>
+
+          <div class="author__arrow" aria-hidden="true">
+            <svg width="98" height="8" viewBox="0 0 98 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 4H96M96 4L91 1M96 4L91 7" stroke="white" stroke-width="0.5"/>
+            </svg>
+          </div>
+
+          <div class="author__circle author__circle--2">
+            <span class="author__circleNum">02</span>
+            <div class="author__circleRing author__circleRing--sm"></div>
+            <div class="author__circleInner">
+              <span class="author__circleLabel">ДИЗАЙН ИНТЕРЬЕРА</span>
+              <p class="author__circleDesc">Осознанное проектирование</p>
+            </div>
+          </div>
+
+          <div class="author__circle author__circle--3">
+            <span class="author__circleNum">03</span>
+            <div class="author__circleRing author__circleRing--sm"></div>
+            <div class="author__circleInner">
+              <span class="author__circleLabel">РЕАЛИЗАЦИЯ</span>
+              <p class="author__circleDesc">Удовлетворенность в&nbsp;результате, удовольствие в&nbsp;жизни</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="target" id="target">
+        <h2 class="target__title">Этот метод для&nbsp;тебя, если</h2>
+
+        <div class="target__grid">
+          <!-- Row 1 -->
+          <div class="target__row target__row--1">
+            <div class="target__card target__card--left target__card--1">
+              <h3 class="target__card-title">Ты&nbsp;ищешь не&nbsp;шаблон, а&nbsp;персональное решение</h3>
+              <p class="target__card-desc">Хочешь, чтобы пространство отражало твою личность, привычки и&nbsp;ценности.</p>
+            </div>
+            <div class="target__card target__card--right target__card--2">
+              <h3 class="target__card-title">Тебе нужна ясность перед ремонтом</h3>
+              <p class="target__card-desc">Предпочитаешь сначала понять направление и&nbsp;запрос к&nbsp;пространству, а&nbsp;потом переходить к&nbsp;дизайну и&nbsp;реализации.</p>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="target__row target__row--2">
+            <div class="target__card target__card--left target__card--3">
+              <h3 class="target__card-title">Не&nbsp;хочешь упустить важное</h3>
+              <p class="target__card-desc">На&nbsp;этапе БиоГрафики ты&nbsp;обдумываешь и&nbsp;проживаешь каждый момент на&nbsp;каждом квадратном метре</p>
+            </div>
+            <div class="target__card target__card--right target__card--4">
+              <h3 class="target__card-title">Ты&nbsp;готов к&nbsp;диалогу</h3>
+              <p class="target__card-desc">У&nbsp;тебя есть время и&nbsp;желание размышлять, обсуждать, открываться, ты&nbsp;чувствуешь интерес к&nbsp;самоисследованию.</p>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="target__row target__row--3">
+            <div class="target__card target__card--left target__card--5">
+              <h3 class="target__card-title">Ценишь долгосрочное проектирование</h3>
+              <p class="target__card-desc">Решения, найденные в&nbsp;методе БиоГрафика, учитывают будущие сценарии твоей жизни и&nbsp;закрывают потребности надолго.</p>
+            </div>
+            <div class="target__card target__card--right target__card--6">
+              <h3 class="target__card-title">Хочешь, чтобы дом поддерживал тебя</h3>
+              <p class="target__card-desc">Интерьер становится не&nbsp;просто красивым, а&nbsp;таким, в&nbsp;котором ты&nbsp;отдыхаешь, вдохновляешься, становишься продуктивным и&nbsp;чувствуешь себя на&nbsp;своём месте.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Central graphic element -->
+        <div class="target__graphic">
+          <img class="target__shape" src="./assets/shape-1.svg" alt="" />
+          <p class="target__graphic-text">БИОГРАФИКА дает возможность представить свой будущий дом в&nbsp;деталях, соединить потребность с&nbsp;функциональным решением</p>
+        </div>
+      </section>
+
+      <section class="stages" id="process">
+        <div class="stages__card">
+          <h2 class="stages__title">Этапы создания БиоГрафики. Путь к&nbsp;интерьеру мечты</h2>
+
+          <div class="stages__list">
+            <!-- 01 -->
+            <div class="stages__line" aria-hidden="true"></div>
+            <div class="stages__item js-accordion">
+              <button class="stages__header" type="button" aria-expanded="false">
+                <span class="stages__num">[ 01 ]</span>
+                <span class="stages__name">Глубинное интервью</span>
+                <span class="stages__icon" aria-hidden="true">
+                  <img src="./assets/union.svg" alt="" width="14" height="14" />
+                </span>
+              </button>
+              <div class="stages__body">
+                <p>Здесь начинается путь. В&nbsp;формате интервью мы&nbsp;погружаемся в&nbsp;твой образ жизни, привычки, прошлый опыт отношений с&nbsp;пространством, желания, потребности. Оцениваем и&nbsp;касаемся различных сфер: от&nbsp;восприятий и&nbsp;воображения до&nbsp;физиологии и&nbsp;состояний.</p>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="stages__line" aria-hidden="true"></div>
+            <div class="stages__item js-accordion">
+              <button class="stages__header" type="button" aria-expanded="false">
+                <span class="stages__num">[ 02 ]</span>
+                <span class="stages__name">Исследование и&nbsp;сбор системы</span>
+                <span class="stages__icon" aria-hidden="true">
+                  <img src="./assets/union.svg" alt="" width="14" height="14" />
+                </span>
+              </button>
+              <div class="stages__body">
+                <p>Это&nbsp;этап работы, в&nbsp;котором я&nbsp;анализирую полученные данные. Здесь конструирую твою подробную аутентичную карту в&nbsp;призме связи с&nbsp;пространством. Здесь рождаются архетипы. Проверяю гипотезы и&nbsp;формирую общее видение. Появляется образ тебя, как&nbsp;хозяина будущего дома.</p>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="stages__line" aria-hidden="true"></div>
+            <div class="stages__item js-accordion">
+              <button class="stages__header" type="button" aria-expanded="false">
+                <span class="stages__num">[ 03 ]</span>
+                <span class="stages__name">ПредПрезентация /знакомство с&nbsp;БиоГрафикой</span>
+                <span class="stages__icon" aria-hidden="true">
+                  <img src="./assets/union.svg" alt="" width="14" height="14" />
+                </span>
+              </button>
+              <div class="stages__body">
+                <p>Здесь я&nbsp;знакомлю тебя с&nbsp;промежуточными выводами, получаю обратную связь и&nbsp;работаю с&nbsp;твоим откликом. Вместе корректируем, дополняем, углубляем.</p>
+              </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="stages__line" aria-hidden="true"></div>
+            <div class="stages__item js-accordion">
+              <button class="stages__header" type="button" aria-expanded="false">
+                <span class="stages__num">[ 04 ]</span>
+                <span class="stages__name">Передача</span>
+                <span class="stages__icon" aria-hidden="true">
+                  <img src="./assets/union.svg" alt="" width="14" height="14" />
+                </span>
+              </button>
+              <div class="stages__body">
+                <p>Здесь ты&nbsp;получаешь итог работы. Альбом, в&nbsp;котором ты&nbsp;увидишь свою личностную структуру через метод БиоГрафики. Здесь собраны все&nbsp;выводы исследования. Передаю их в&nbsp;формате живой встречи, на&nbsp;которой комментирую каждый элемент, даю дополнительные рекомендации и&nbsp;говорю о&nbsp;том, как&nbsp;грамотно это&nbsp;использовать. Вместе резюмируем всю проделанную работу.</p>
+              </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="stages__line" aria-hidden="true"></div>
+            <div class="stages__item js-accordion">
+              <button class="stages__header" type="button" aria-expanded="false">
+                <span class="stages__num">[ 05 ]</span>
+                <span class="stages__name">Адаптация</span>
+                <span class="stages__icon" aria-hidden="true">
+                  <img src="./assets/union.svg" alt="" width="14" height="14" />
+                </span>
+              </button>
+              <div class="stages__body">
+                <p>Если твой запрос на&nbsp;БиоГрафику и&nbsp;изменения пространства связан с&nbsp;уже существующим интерьером мы&nbsp;перекладываем и&nbsp;адаптируем на&nbsp;него итоги исследования. Нам потребуется еще одна встреча, в&nbsp;которой, мы&nbsp;ищем точки изменений и&nbsp;преобразований: функциональных, визуальных, чувственных.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="result" id="result">
+        <div class="result__layout">
+          <!-- Circle graphic -->
+          <div class="result__circleWrap">
+            <div class="result__circleOuter"></div>
+            <div class="result__circleInner"></div>
+            <div class="result__orbit result__orbit--top">
+              <div class="result__dot"></div>
+            </div>
+            <div class="result__orbit result__orbit--left">
+              <div class="result__dot"></div>
+            </div>
+            <div class="result__orbit result__orbit--right">
+              <div class="result__dot"></div>
+            </div>
+            <div class="result__circleContent">
+              <span class="result__label">что&nbsp;ты получаешь</span>
+              <img class="result__arrowDown" src="./assets/arrow-down-sm.svg" alt="" aria-hidden="true" />
+              <h2 class="result__title">Персональную презентацию по&nbsp;методу БиоГрафики</h2>
+            </div>
+          </div>
+
+          <!-- Connector arrow -->
+          <div class="result__connector">
+            <img src="./assets/arrow-right-long.svg" alt="" aria-hidden="true" />
+          </div>
+
+          <!-- List -->
+          <ul class="result__list">
+            <li>Анализ исходной точки и&nbsp;запроса</li>
+            <li>Типы взаимодействий с&nbsp;пространством</li>
+            <li>Карта видимых и&nbsp;скрытых привычек</li>
+            <li>Линия личного опыта: прошлое — настоящее — будущее</li>
+            <li>Матрица архетипов, их визуальное прочтение</li>
+            <li>Функциональный трэк-график решений</li>
+            <li>Визуальная галерея</li>
+            <li>Рекомендации по&nbsp;реализации и&nbsp;дальнейшему использованию БиоГрафики</li>
+          </ul>
+        </div>
+
+        <!-- Bottom section -->
+        <div class="result__bottom">
+          <div class="result__bottomLine"></div>
+          <p class="result__extra">а&nbsp;еще получаешь Свежий взгляд на&nbsp;привычное и&nbsp;Удовольствие от&nbsp;самоисследования</p>
+          <div class="result__actions">
+            <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
+            <a class="btn btn--outline" href="#">Познакомиться с&nbsp;методом</a>
+          </div>
+          <div class="result__bottomLine"></div>
+        </div>
+      </section>
+      <section class="example" id="example">
+        <div class="example__card">
+          <!-- Slide 1 -->
+          <div class="example__slide is-active" data-slide="0">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 01 ] Портрет клиента</span>
+            <div class="example__content example__content--portrait">
+              <div class="example__photo">
+                <img src="./assets/demid.jpg" alt="Демид" />
+              </div>
+              <div class="example__text">
+                <h3 class="example__name">Демид, 39 лет</h3>
+                <div class="example__desc">
+                  <p>Предприниматель, основатель технологической компании. Руководит командой, живёт в&nbsp;Москве. В&nbsp;разводе, воспитывает дочь.</p>
+                  <p>Финансово устойчив, мыслит стратегически. Ценит точность — в&nbsp;цифрах, договорённостях и&nbsp;пространстве вокруг себя.</p>
+                  <p>Любит готовить. Вечер с&nbsp;дочкой у&nbsp;плиты для&nbsp;него важнее ужина в&nbsp;ресторане. Тренировки, мотоцикл, поездки — способ держать тонус и&nbsp;переключаться. Дом — территория восстановления и&nbsp;концентрации.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="example__slide" data-slide="1">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 02 ] Запрос</span>
+            <div class="example__content">
+              <h3 class="example__name">Обуютить холостяцкую квартиру, сохранив чистоту пространства.</h3>
+              <div class="example__desc">
+                <p>Квартира в&nbsp;Москве — новая, с&nbsp;пустыми стенами и&nbsp;ощущением чистого листа. Работа начиналась не&nbsp;с подбора мебели, а&nbsp;с&nbsp;исследования биографии владельца и&nbsp;его&nbsp;повседневной жизни.</p>
+                <p>Мы&nbsp;изучали ритм его&nbsp;дней, привычки и&nbsp;сценарии передвижения по&nbsp;дому: где&nbsp;он концентрируется, как&nbsp;отдыхает, где&nbsp;возникают естественные точки остановки. Ему была нужна не&nbsp;декоративность, а&nbsp;система пространства, на&nbsp;которую можно опереться в&nbsp;долгую.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="example__slide" data-slide="2">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 03 ] Фрагменты исследования</span>
+            <div class="example__content">
+              <div class="example__desc">
+                <p>«Я люблю, когда дома всё понятно. Чтобы не&nbsp;думать лишний раз, где&nbsp;что&nbsp;лежит».</p>
+                <p>«Мне важно, чтобы кухня была нормальной. Я&nbsp;там реально провожу время, особенно когда дочь приезжает».</p>
+                <p>«После работы хочется тишины. Чтобы пространство немного замедляло».</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="example__slide" data-slide="3">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 04 ] Архетипы и&nbsp;внутренняя логика</span>
+            <div class="example__content">
+              <h3 class="example__name">У&nbsp;Демида сформировались три опорных архетипа</h3>
+              <div class="example__archetypes">
+                <div class="example__archetype">
+                  <span class="example__archLabel">Кочевник</span>
+                  <p class="example__archDesc">Способность быстро осваивать новые пространства и&nbsp;делать их своими через несколько точных элементов. Важна не&nbsp;вещь, а&nbsp;смысл, который она удерживает.</p>
+                </div>
+                <div class="example__archetype">
+                  <span class="example__archLabel">Новатор</span>
+                  <p class="example__archDesc">Современное мышление, интерес к&nbsp;технологиям и&nbsp;гибким решениям. Пространство должно легко адаптироваться к&nbsp;разным сценариям жизни.</p>
+                </div>
+                <div class="example__archetype">
+                  <span class="example__archLabel">Гурмейкер</span>
+                  <p class="example__archDesc">Удовольствие от&nbsp;процесса, внимание к&nbsp;деталям. Кухня становится пространством творчества, общения и&nbsp;личной проявленности.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="example__slide" data-slide="4">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 05 ] Как&nbsp;это переведено в&nbsp;пространство</span>
+            <div class="example__content">
+              <h3 class="example__name">Пространство поддерживает концентрацию днём и&nbsp;мягко замедляет вечером.</h3>
+              <div class="example__desc">
+                <p>Трансформируемый кабинет-гостиная: рабочая зона закрывается раздвижной системой и&nbsp;вечером становится частью общего пространства — естественное переключение из&nbsp;рабочего режима в&nbsp;спокойный.</p>
+                <p>Хранение интегрировано так, чтобы сохранялась чистота визуального поля и&nbsp;пространство легко возвращалось в&nbsp;порядок.</p>
+                <p>Кухня спроектирована как&nbsp;технологичная мастерская с&nbsp;продуманной эргономикой и&nbsp;световыми сценариями — место, где&nbsp;удобно готовить и&nbsp;проводить время с&nbsp;дочкой.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="example__slide" data-slide="5">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 06 ] Визуальный трек</span>
+            <div class="example__content">
+              <h3 class="example__name">Собрана галерея референсов, отражающих ритм жизни и&nbsp;масштаб мышления Демида.</h3>
+              <div class="example__desc">
+                <p>Чёткая композиция, технологичность без&nbsp;холода, баланс металла и&nbsp;дерева, глубина без&nbsp;перегруженности. Этот визуальный трек стал ориентиром для&nbsp;дальнейшего проектирования и&nbsp;коммуникации с&nbsp;дизайнером.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="example__slide" data-slide="6">
+            <h2 class="example__heading">Пример работы</h2>
+            <span class="example__sub">[ 07 ] Итог</span>
+            <div class="example__content">
+              <div class="example__desc">
+                <p>Демид получил структурированную презентацию БиоГрафики:</p>
+                <ul>
+                  <li>понимание своего пространственного кода</li>
+                  <li>принципы планировки и&nbsp;функциональных решений</li>
+                  <li>визуальный язык для&nbsp;дизайн-проекта</li>
+                  <li>чёткое техническое задание</li>
+                </ul>
+                <p>Такой этап позволяет избежать хаотичных решений, лишних трат и&nbsp;переделок.</p>
+                <p>Проектирование начинается уже с&nbsp;ясной системы, а&nbsp;не&nbsp;с набора случайных идей.</p>
+              </div>
+              <h3 class="example__name example__name--quote">После презентации Демид сказал: «Я впервые увидел свой дом до&nbsp;того, как&nbsp;он появился».</h3>
+            </div>
+          </div>
+
+          <!-- Navigation arrows -->
+          <div class="example__nav">
+            <button class="example__arrow example__arrow--prev js-exPrev" type="button" aria-label="Предыдущий слайд">
+              <img src="./assets/arrow-circle-left.svg" alt="" width="30" height="30" />
+            </button>
+            <button class="example__arrow example__arrow--next js-exNext" type="button" aria-label="Следующий слайд">
+              <img src="./assets/arrow-circle-right.svg" alt="" width="30" height="30" />
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="formats" id="formats">
+        <h2 class="formats__title">Форматы работы</h2>
+
+        <!-- Format 01 -->
+        <div class="formats__item">
+          <div class="formats__top">
+            <span class="formats__num">[ 01 ]</span>
+            <div class="formats__line" aria-hidden="true"></div>
+          </div>
+          <div class="formats__row">
+            <div class="formats__left">
+              <h3 class="formats__name">БиоГрафика среды</h3>
+              <span class="formats__sub">Исследование + презентация</span>
+            </div>
+            <div class="formats__right">
+              <ul class="formats__list">
+                <li>3 встречи (онлайн/офлайн)</li>
+                <li>Результат: персональный альбом</li>
+                <li>Цена от&nbsp;120 000 рублей</li>
+              </ul>
+              <p class="formats__desc">Ты&nbsp;можешь использовать его&nbsp;самостоятельно, передать дизайнеру или продолжить работу по&nbsp;проектированию со&nbsp;мной на&nbsp;основе результата метода.</p>
+              <a class="btn btn--filled formats__btn" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Format 02 -->
+        <div class="formats__item">
+          <div class="formats__top">
+            <span class="formats__num">[ 02 ]</span>
+            <div class="formats__line" aria-hidden="true"></div>
+          </div>
+          <div class="formats__row">
+            <div class="formats__left">
+              <h3 class="formats__name">БиоГрафика среды + Дизайн-проект</h3>
+              <span class="formats__sub">Исследование + презентация + адаптация + проектирование</span>
+            </div>
+            <div class="formats__right">
+              <ul class="formats__list">
+                <li>Полный цикл: от&nbsp;исследование до&nbsp;готового дизайн-проекта</li>
+                <li>Цена от&nbsp;7500 рублей/м2</li>
+              </ul>
+              <p class="formats__desc">Ты&nbsp;получаешь дизайн-проект своего жилого пространства на&nbsp;основании твоей Биографики.</p>
+              <a class="btn btn--filled formats__btn" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Format 03 -->
+        <div class="formats__item">
+          <div class="formats__top">
+            <span class="formats__num">[ 03 ]</span>
+            <div class="formats__line" aria-hidden="true"></div>
+          </div>
+          <div class="formats__row">
+            <div class="formats__left">
+              <h3 class="formats__name">БиоГрафика среды + Кураторство</h3>
+              <span class="formats__sub">Исследование + адаптация + ведение проектной группы</span>
+            </div>
+            <div class="formats__right">
+              <ul class="formats__list">
+                <li>Цена от&nbsp;40000 рублей в&nbsp;месяц</li>
+              </ul>
+              <p class="formats__desc">Пакет подходит, если ты&nbsp;живёшь в&nbsp;другом городе или работаешь с&nbsp;командой. Также, подходит для&nbsp;компаний, реализующих проекты общественных пространств.</p>
+              <a class="btn btn--filled formats__btn" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 9 — О проводнике ===== -->
+      <section class="guide" id="guide">
+        <div class="guide__bg" aria-hidden="true">
+          <img src="./assets/masha-2.jpg" alt="" />
+        </div>
+        <div class="guide__photo-mobile">
+          <img src="./assets/masha-2.jpg" alt="Мария Лысак" />
+        </div>
+        <div class="guide__content">
+          <h2 class="guide__title">О&nbsp;проводнике</h2>
+          <ul class="guide__facts">
+            <li class="guide__fact">15 лет в&nbsp;дизайне и&nbsp;проектировании</li>
+            <li class="guide__fact">100+ реализованных проектов от&nbsp;Comfort до&nbsp;Deluxe класса</li>
+            <li class="guide__fact">10 лет управления собственной студией</li>
+            <li class="guide__fact">Частные и&nbsp;общественные пространства</li>
+            <li class="guide__fact">Сотрудничество с&nbsp;девелоперскими компаниями</li>
+          </ul>
+          <a class="btn btn--glass guide__btn" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Узнать обо мне больше</a>
+        </div>
+      </section>
+
+      <!-- ===== FAQ + Contacts background video ===== -->
+      <div class="faqBgVideo" aria-hidden="true">
+        <iframe
+          src="https://player.vimeo.com/video/1176454842?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&title=0&byline=0&portrait=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- ===== Section 10 — FAQ ===== -->
+      <section class="faq" id="faq">
+        <h2 class="faq__title">FAQ</h2>
+
+        <div class="faq__list">
+          <!-- 01 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 01 ]</span>
+              <span class="faq__question">Зачем Дизайн Код, если я&nbsp;хочу сразу дизайн?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">Метод даёт понимание, кто&nbsp;вы и&nbsp;что&nbsp;вам нужно, прежде чем&nbsp;начинать ремонт. Это&nbsp;экономит ресурсы и&nbsp;формирует прочную основу для&nbsp;проекта.</p>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 02 ]</span>
+              <span class="faq__question">Как&nbsp;проходят встречи?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">В&nbsp;приоритете всегда живые встречи — именно в&nbsp;личном контакте лучше всего раскрываются детали. Но&nbsp;если очная работа невозможна, процесс может проходить и&nbsp;онлайн: мы&nbsp;используем видеозвонки, анкеты и&nbsp;дополнительные инструменты, чтобы сохранить глубину исследования.</p>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 03 ]</span>
+              <span class="faq__question">Что&nbsp;делать с&nbsp;Дизайн Кодом, если Маша не&nbsp;берёт мой проект?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">Альбом создан так, чтобы вы могли использовать его&nbsp;самостоятельно или передать любому дизайнеру. Там есть все&nbsp;ориентиры, и&nbsp;при&nbsp;желании можно обратиться ко&nbsp;мне за&nbsp;кураторством.</p>
+            </div>
+          </div>
+
+          <!-- 04 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 04 ]</span>
+              <span class="faq__question">Смогу ли я&nbsp;реализовать идеи из&nbsp;альбома без&nbsp;дизайнера?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">Да. В&nbsp;альбоме есть практические советы, подбор материалов и&nbsp;структура, по&nbsp;которой вы сможете двигаться самостоятельно.</p>
+            </div>
+          </div>
+
+          <!-- 05 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 05 ]</span>
+              <span class="faq__question">А&nbsp;вдруг мне не&nbsp;понравится результат?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">На&nbsp;каждом этапе есть обратная связь. Мы&nbsp;ищем решения вместе, поэтому финальный результат всегда согласован и&nbsp;отражает вас.</p>
+            </div>
+          </div>
+
+          <!-- 06 -->
+          <div class="faq__item">
+            <button class="faq__header" type="button" aria-expanded="false">
+              <span class="faq__num">[ 06 ]</span>
+              <span class="faq__question">Сколько по&nbsp;времени делается биографика и&nbsp;сколько от&nbsp;меня потребуется времени участия?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <img src="./assets/union.svg" alt="" width="14" height="14" />
+              </span>
+            </button>
+            <div class="faq__body">
+              <p class="faq__answer">3 живые встречи занимают по&nbsp;2-3 часа каждая, остальная часть работы лежит на&nbsp;мне. На&nbsp;создание альбома со&nbsp;всеми материалами и&nbsp;расшифровкой Кода уходит до&nbsp;3 недель.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 11 — Контакты ===== -->
+      <section class="contacts" id="contacts">
+        <div class="contacts__decor" aria-hidden="true">
+          <!-- Desktop graphic (without horizontal line) -->
+          <svg class="contacts__decor-desktop" width="599" height="399" viewBox="0 0 599 399" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .cd-draw { stroke-dasharray: 900; stroke-dashoffset: 900; }
+              .cd-draw2 { stroke-dasharray: 900; stroke-dashoffset: 900; }
+              .cd-circ-sm { stroke-dasharray: 260; stroke-dashoffset: 260; }
+              .cd-circ-md { stroke-dasharray: 380; stroke-dashoffset: 380; }
+              .cd-circ-lg { stroke-dasharray: 260; stroke-dashoffset: 260; }
+              .cd-tri { stroke-dasharray: 800; stroke-dashoffset: 800; }
+              .cd-sq-wrap { transform-origin: 198px 199px; }
+              .cd-pulse1, .cd-pulse2, .cd-pulse3 { opacity: 0; }
+
+              /* Activated by JS when in viewport */
+              .cd-animate .cd-draw { animation: cdDrawIn 3s ease forwards; }
+              .cd-animate .cd-draw2 { animation: cdDrawIn 3s ease 0.5s forwards; }
+              .cd-animate .cd-circ-sm { animation: cdDrawIn 2s ease 1s forwards; }
+              .cd-animate .cd-circ-md { animation: cdDrawIn 2.5s ease 0.8s forwards; }
+              .cd-animate .cd-circ-lg { animation: cdDrawIn 2s ease 1.2s forwards; }
+              .cd-animate .cd-tri { animation: cdDrawIn 3s ease 0.3s forwards; }
+              .cd-animate .cd-sq-wrap { animation: cdSpin 90s linear infinite; }
+              .cd-animate .cd-pulse1 { animation: cdFade 0.5s ease 1.8s forwards, cdPulse 3s ease-in-out 2.3s infinite; }
+              .cd-animate .cd-pulse2 { animation: cdFade 0.5s ease 2.2s forwards, cdPulse 3s ease-in-out 2.7s infinite; }
+              .cd-animate .cd-pulse3 { animation: cdFade 0.5s ease 2.6s forwards, cdPulse 3s ease-in-out 3.1s infinite; }
+
+              @keyframes cdDrawIn { to { stroke-dashoffset: 0; } }
+              @keyframes cdFade { to { opacity: 0.75; } }
+              @keyframes cdPulse { 0%,100% { opacity: 0.75; } 50% { opacity: 1; } }
+              @keyframes cdSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+            </style>
+            <path class="cd-draw" d="M197.721 339.668C275.593 339.668 338.721 276.764 338.721 199.168C338.721 121.572 275.593 58.668 197.721 58.668" stroke="white" stroke-opacity="0.3"/>
+            <path class="cd-draw2" d="M198.721 339.668C120.849 339.668 57.7207 276.764 57.7207 199.168C57.7207 121.572 120.849 58.668 198.721 58.668" stroke="white" stroke-opacity="0.3"/>
+            <circle class="cd-pulse1" cx="198.757" cy="100.632" r="2.96405" fill="white" fill-opacity="0.75"/>
+            <circle class="cd-pulse2" cx="198.964" cy="199.318" r="2.96405" fill="white" fill-opacity="0.75"/>
+            <circle class="cd-pulse3" cx="198.757" cy="298.632" r="2.96405" fill="white" fill-opacity="0.75"/>
+            <circle class="cd-circ-sm" cx="198.721" cy="99.668" r="40.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+            <circle class="cd-circ-md" cx="199" cy="199.354" r="58.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+            <circle class="cd-circ-lg" cx="198.721" cy="298.668" r="40.5" stroke="white" stroke-opacity="0.75" fill="none"/>
+            <path class="cd-tri" d="M198.86 0.353516L397.721 199.214L198.86 398.074" stroke="white" stroke-opacity="0.3"/>
+            <g class="cd-sq-wrap">
+              <rect x="-0.5" y="0.5" width="197" height="197" transform="matrix(-1 0 0 1 296.721 100.668)" stroke="#BCBCBC" stroke-opacity="0.75" stroke-dasharray="1 5" fill="none"/>
+            </g>
+          </svg>
+          <!-- Horizontal dashed line — separate element -->
+          <div class="contacts__line"></div>
+          <!-- Mobile: single SVG -->
+          <img class="contacts__decor-mobile" src="./assets/contacts-decor-mob.svg" alt="" />
+        </div>
+
+        <div class="contacts__content">
+          <h2 class="contacts__title">Контакты</h2>
+          <p class="contacts__desc">Если вам откликается этот подход, напишите, чтобы обсудить детали.</p>
+          <div class="contacts__socials">
+            <a class="contacts__social" href="#" aria-label="Telegram">
+              <img src="./assets/social-tg.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="contacts__social" href="#" aria-label="WhatsApp">
+              <img src="./assets/social-wa.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="contacts__social" href="#" aria-label="Email">
+              <img src="./assets/social-email.svg" alt="" width="30" height="30" />
+            </a>
+            <a class="contacts__social" href="#" aria-label="Сайт">
+              <img src="./assets/social-web.svg" alt="" width="30" height="30" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img class="footer__logo" src="./assets/logo.svg" alt="Биографика" />
+      <a class="footer__dev" href="http://letscreateyour.site/" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/logo-lcys.svg" alt="CREATED BY LCYS" />
+      </a>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

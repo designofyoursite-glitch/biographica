@@ -1,0 +1,39 @@
+<svg width="300" height="385" viewBox="0 0 300 385" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="149.5" cy="192.5" r="105" stroke="white" stroke-opacity="0.76" stroke-dasharray="1 5"/>
+<circle cx="149.5" cy="341.5" r="43" stroke="#BCBCBC" stroke-opacity="0.75"/>
+<circle cx="149.5" cy="43.5" r="43" stroke="#BCBCBC" stroke-opacity="0.75"/>
+<circle cx="149.5" cy="341.5" r="3.5" fill="white" fill-opacity="0.9"/>
+<circle cx="149.5" cy="44.5" r="3.5" fill="white" fill-opacity="0.9"/>
+<rect x="0.707107" y="193.144" width="210.527" height="210.527" transform="rotate(-45 0.707107 193.144)" stroke="white" stroke-opacity="0.3"/>
+
+<!-- Diamond path for animation -->
+<path id="diamond" d="M149.5 44.3 L298.4 193.1 L149.5 342 L0.7 193.1 Z" fill="none" stroke="none"/>
+
+<!-- Dot 1 — fast -->
+<circle r="2.5" fill="white" fill-opacity="0.9">
+  <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#diamond"/>
+  </animateMotion>
+</circle>
+
+<!-- Dot 2 — medium -->
+<circle r="2" fill="white" fill-opacity="0.7">
+  <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" begin="-4s">
+    <mpath href="#diamond"/>
+  </animateMotion>
+</circle>
+
+<!-- Dot 3 — slow -->
+<circle r="1.5" fill="white" fill-opacity="0.5">
+  <animateMotion dur="18s" repeatCount="indefinite" rotate="auto" begin="-2s">
+    <mpath href="#diamond"/>
+  </animateMotion>
+</circle>
+
+<!-- Dot 4 — reverse medium -->
+<circle r="2" fill="white" fill-opacity="0.6">
+  <animateMotion dur="14s" repeatCount="indefinite" rotate="auto" begin="-7s" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+    <mpath href="#diamond"/>
+  </animateMotion>
+</circle>
+</svg>
