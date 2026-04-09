@@ -198,7 +198,7 @@
 
               <div class="hero__actions" role="group" aria-label="Действия">
                 <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
-                <a class="btn btn--outline" href="#">Познакомиться с&nbsp;методом</a>
+                <a class="btn btn--outline" href="#about">Познакомиться с&nbsp;методом</a>
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@
           </div>
           <div class="author__actions">
             <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
-            <a class="btn btn--outline" href="#">Смотреть форматы</a>
+            <a class="btn btn--outline" href="#formats">Смотреть форматы</a>
           </div>
         </div>
 
@@ -573,7 +573,7 @@
           <p class="result__extra">а&nbsp;еще получаешь Свежий взгляд на&nbsp;привычное и&nbsp;Удовольствие от&nbsp;самоисследования</p>
           <div class="result__actions">
             <a class="btn btn--filled" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Заказать биографику</a>
-            <a class="btn btn--outline" href="#">Познакомиться с&nbsp;методом</a>
+            <a class="btn btn--outline" href="#about">Познакомиться с&nbsp;методом</a>
           </div>
           <div class="result__bottomLine"></div>
         </div>
@@ -792,9 +792,57 @@
             <li class="guide__fact">Частные и&nbsp;общественные пространства</li>
             <li class="guide__fact">Сотрудничество с&nbsp;девелоперскими компаниями</li>
           </ul>
-          <a class="btn btn--glass guide__btn" href="https://t.me/lysak_mariya" target="_blank" rel="noopener noreferrer">Узнать обо мне больше</a>
+          <button class="btn btn--glass guide__btn" type="button" data-open-popup="aboutSlider">Узнать обо мне больше</button>
         </div>
       </section>
+
+      <!-- ===== Popup — About slider ===== -->
+      <div class="aboutSlider__backdrop" id="aboutSliderBackdrop" aria-hidden="true">
+      <div class="aboutSlider" id="aboutSlider">
+        <button class="aboutSlider__close" aria-label="Закрыть">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L14 14M14 1L1 14" stroke="white" stroke-width="1"/>
+          </svg>
+        </button>
+        <div class="aboutSlider__content">
+          <div class="aboutSlider__header">
+            <h2 class="aboutSlider__name">Мария Лысак</h2>
+            <p class="aboutSlider__role">Автор метода, дизайнер, продуктолог в&nbsp;девелопменте</p>
+          </div>
+          <div class="aboutSlider__track">
+            <div class="aboutSlider__card">
+              <h2 class="aboutSlider__quote">«Проектировать не&nbsp;метры, а&nbsp;истории человека»</h2>
+              <p class="aboutSlider__desc">Я в&nbsp;профессии более 15&nbsp;лет. За&nbsp;это время в&nbsp;моей работе были разные пространства&nbsp;— от&nbsp;камерных квартир до&nbsp;общественных объектов. Но&nbsp;в&nbsp;центре всегда оставался человек: его привычки, характер, образ жизни, внутренние ритмы. Со&nbsp;временем именно исследование человеческих сценариев стало моей главной профессиональной компетенцией.</p>
+            </div>
+            <div class="aboutSlider__card">
+              <h2 class="aboutSlider__quote">«У&nbsp;каждого пространства своя сила: одно держит, другое&nbsp;— отпускает»</h2>
+              <p class="aboutSlider__desc">В&nbsp;детстве я&nbsp;нарисовала свой первый проект&nbsp;— эскиз дома. Он&nbsp;был про настроение, про ощущение себя внутри пространства. Позже я&nbsp;начала замечать, как меняется состояние в&nbsp;разных местах: в&nbsp;светлом классе, узком коридоре, дома у&nbsp;близких. Эти ощущения складывались в&nbsp;опыт&nbsp;— и&nbsp;становилось очевидно: пространство всегда влияет на&nbsp;человека. Именно это привело меня в&nbsp;профессию.</p>
+            </div>
+            <div class="aboutSlider__card">
+              <h2 class="aboutSlider__quote">«Результат появляется там, где теория становится практикой»</h2>
+              <p class="aboutSlider__desc">Я&nbsp;начала работать ещё во&nbsp;время учёбы, сразу проверяя знания в&nbsp;реальных проектах. Первый опыт&nbsp;— частные дома, где я&nbsp;занималась и&nbsp;архитектурой, и&nbsp;интерьером. Этот этап дал мне понимание дома как системы: как он&nbsp;устроен, как формируется среда и&nbsp;как человек живёт внутри неё&nbsp;— не&nbsp;на&nbsp;уровне идей, а&nbsp;в&nbsp;реальности.</p>
+            </div>
+            <div class="aboutSlider__card">
+              <h2 class="aboutSlider__quote">«Опыт не&nbsp;копится&nbsp;— он&nbsp;постепенно собирается в&nbsp;целостность»</h2>
+              <p class="aboutSlider__desc">После университета я&nbsp;работала в&nbsp;московской студии дизайна&nbsp;— проекты становились сложнее, масштабнее, требовали другого уровня мышления. Позже я&nbsp;открыла собственную студию, собрала команду, расширила географию и&nbsp;продолжила учиться&nbsp;— в&nbsp;том числе в&nbsp;сфере девелопмента, в&nbsp;России и&nbsp;Европе. Со&nbsp;временем разрозненные решения начали складываться в&nbsp;систему.</p>
+            </div>
+            <div class="aboutSlider__card">
+              <h2 class="aboutSlider__quote">«Как создать опору в&nbsp;проектировании и&nbsp;при этом не&nbsp;потерять свободу?»</h2>
+              <p class="aboutSlider__desc">Этот вопрос стал для меня ключевым. Я&nbsp;искала методологию, при которой интерьер не&nbsp;просто выглядит эстетично, а&nbsp;работает&nbsp;— под человека, под его жизнь, становится и&nbsp;опорой и&nbsp;его личным творением. Так появился мой подход и&nbsp;метод БиоГрафики&nbsp;— как стратегический этап анализа заказчика, с&nbsp;которого начинается точное пространство.</p>
+            </div>
+          </div>
+          <div class="aboutSlider__footer">
+            <span class="aboutSlider__counter">01 / 05</span>
+            <button class="aboutSlider__arrow" aria-label="Следующий слайд">
+              <svg width="82" height="8" viewBox="0 0 82 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="4" x2="76" y2="4" stroke="white" stroke-width="0.5"/>
+                <path d="M76 0.5L81 4L76 7.5" stroke="white" stroke-width="0.5" fill="none"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
 
       <!-- ===== FAQ + Contacts background video ===== -->
       <div class="faqBgVideo" aria-hidden="true">
@@ -967,6 +1015,7 @@
           </div>
         </div>
       </section>
+
     </main>
 
     <footer class="footer">

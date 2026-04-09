@@ -7,8 +7,14 @@
 
   if (!iframe || buttons.length === 0 || typeof Vimeo === "undefined") return;
 
-  const players = [new Vimeo.Player(iframe)];
-  if (iframePreview) players.push(new Vimeo.Player(iframePreview));
+  let players;
+  try {
+    players = [new Vimeo.Player(iframe)];
+    if (iframePreview) players.push(new Vimeo.Player(iframePreview));
+  } catch (e) {
+    console.warn("Vimeo Player init skipped:", e);
+    return;
+  }
 
   // Keep background + preview in sync (best-effort).
   const SYNC_THRESHOLD_S = 0.18;
@@ -247,6 +253,10 @@
 (() => {
   if (window.innerWidth < 768) return;
 
+  // About cards "reveal" animation controls `transform`.
+  // Parallax would overwrite it and break the slide effect, so disable parallax for cards.
+  return;
+
   const section = document.querySelector(".about");
   if (!section) return;
 
@@ -381,45 +391,68 @@
   const cards = document.querySelectorAll(".about__card");
   if (!about || !cards.length) return;
 
+  const reducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    cards.forEach((card) => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    });
+    return;
+  }
+
   const totalCards = cards.length;
+  const smoothstep = (t) => t * t * (3 - 2 * t);
+  let revealed = false;
 
   const update = () => {
     const rect = about.getBoundingClientRect();
     const viewH = window.innerHeight;
 
-    // Section not in view — hide all
-    if (rect.bottom < 0 || rect.top > viewH) {
+    // Cards sit in the bottom ~half of the section.
+    // Use the midpoint of the section as the trigger reference.
+    const cardZoneTop = rect.top + rect.height * 0.4;
+
+    // Progress: 0 when cardZoneTop enters bottom of viewport,
+    // 1 when cardZoneTop reaches 30% from top.
+    let progress = (viewH - cardZoneTop) / (viewH * 0.7);
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Once fully revealed, stop updating to avoid flicker on scroll back.
+    if (progress >= 1 && !revealed) {
+      revealed = true;
+    }
+
+    if (revealed) {
       cards.forEach((card) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(50px)";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
       });
       return;
     }
 
-    // Progress: 0 when section top enters bottom of viewport,
-    //           1 when section top reaches ~40% from top
-    const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (viewH * 0.7)));
-
     cards.forEach((card, i) => {
-      // Each card has its own range within the overall progress
-      const cardStart = i / (totalCards + 1);
-      const cardEnd = (i + 1.5) / (totalCards + 1);
-      const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / (cardEnd - cardStart)));
-
-      // Eased progress for smoother feel
-      const eased = cardProgress * cardProgress * (3 - 2 * cardProgress); // smoothstep
+      // Stagger: each card starts a bit later.
+      const start = (i / totalCards) * 0.6;
+      const end = start + 0.5;
+      let local = (progress - start) / (end - start);
+      local = Math.max(0, Math.min(1, local));
+      const eased = smoothstep(local);
 
       const y = (1 - eased) * 50;
-      card.style.opacity = eased.toFixed(3);
+      card.style.opacity = String(eased);
       card.style.transform = "translateY(" + y.toFixed(1) + "px)";
     });
   };
 
-  // rAF loop — same pattern as other scroll animations
-  const tick = () => { update(); requestAnimationFrame(tick); };
+  const tick = () => {
+    update();
+    requestAnimationFrame(tick);
+  };
+
   requestAnimationFrame(tick);
-  setInterval(update, 50);
-  update();
 })();
 
 /* ===== Parallax — guide section background ===== */
@@ -545,6 +578,29 @@
   });
 })();
 
+/* ===== Typewriter — about lead (removed) ===== */
+
+/* ===== Scroll reveal — formats items + target cards ===== */
+(() => {
+  const items = document.querySelectorAll(".formats__item, .target__card, .guide__content");
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  items.forEach((item) => observer.observe(item));
+})();
+
 /* ===== Parallax — about section cards ===== */
 (() => {
   if (window.innerWidth < 768) return;
@@ -651,4 +707,151 @@
   window.addEventListener("scroll", update, { passive: true });
   document.body.addEventListener("scroll", update, { passive: true });
   update();
+})();
+
+/* ===== Typewriter — about__lead ===== */
+(() => {
+  const el = document.querySelector(".about__lead");
+  if (!el) return;
+
+  const fullText = el.textContent;
+  const charDelayMs = 6;
+  let animId = 0;
+
+  const typewrite = () => {
+    const id = ++animId;
+    el.textContent = "";
+    let i = 0;
+    const tick = () => {
+      if (id !== animId) return;
+      if (i < fullText.length) {
+        el.textContent += fullText[i];
+        i++;
+        setTimeout(tick, charDelayMs);
+      }
+    };
+    tick();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        typewrite();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(el);
+})();
+
+/* ===== About Slider — popup open/close ===== */
+(() => {
+  const backdrop = document.getElementById("aboutSliderBackdrop");
+  const popup = document.getElementById("aboutSlider");
+  const openBtn = document.querySelector('[data-open-popup="aboutSlider"]');
+  const closeBtn = popup && popup.querySelector(".aboutSlider__close");
+  if (!backdrop || !popup || !openBtn || !closeBtn) return;
+
+  const header = document.querySelector(".siteHeader");
+  const sideNav = document.querySelector(".sideNav");
+
+  const open = () => {
+    backdrop.classList.add("aboutSlider__backdrop--open");
+    backdrop.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (header) header.style.display = "none";
+    if (sideNav) sideNav.style.display = "none";
+  };
+
+  const close = () => {
+    backdrop.classList.remove("aboutSlider__backdrop--open");
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (header) header.style.display = "";
+    if (sideNav) sideNav.style.display = "";
+  };
+
+  openBtn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+
+  // Клик по backdrop (вне попапа) закрывает
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && backdrop.classList.contains("aboutSlider__backdrop--open")) close();
+  });
+})();
+
+/* ===== About Slider — arrow, swipe, counter ===== */
+(() => {
+  const track = document.querySelector(".aboutSlider__track");
+  const arrow = document.querySelector(".aboutSlider__arrow");
+  const counter = document.querySelector(".aboutSlider__counter");
+  const cards = document.querySelectorAll(".aboutSlider__card");
+  if (!track || !arrow || !cards.length) return;
+
+  const total = cards.length;
+
+  const updateCounter = () => {
+    if (!counter) return;
+    const cardW = cards[0].offsetWidth + 20; // width + gap
+    const idx = Math.round(track.scrollLeft / cardW) + 1;
+    const current = Math.min(idx, total);
+    counter.textContent =
+      String(current).padStart(2, "0") + " / " + String(total).padStart(2, "0");
+  };
+
+  // Arrow click
+  arrow.addEventListener("click", () => {
+    const cardW = cards[0].offsetWidth + 20;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (track.scrollLeft >= maxScroll - 10) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      track.scrollBy({ left: cardW, behavior: "smooth" });
+    }
+  });
+
+  // Update counter on scroll
+  track.addEventListener("scroll", updateCounter, { passive: true });
+
+  // Touch swipe (native scroll already works, just ensure grab drag for mouse)
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    track.style.scrollBehavior = "auto";
+  });
+
+  track.addEventListener("mouseleave", () => { isDown = false; });
+  track.addEventListener("mouseup", () => {
+    isDown = false;
+    track.style.scrollBehavior = "smooth";
+  });
+
+  track.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Equalise card heights
+  const equaliseCards = () => {
+    cards.forEach((c) => (c.style.height = "auto"));
+    let maxH = 0;
+    cards.forEach((c) => { if (c.scrollHeight > maxH) maxH = c.scrollHeight; });
+    cards.forEach((c) => (c.style.minHeight = maxH + "px"));
+  };
+
+  equaliseCards();
+  window.addEventListener("resize", equaliseCards);
+  updateCounter();
 })();

@@ -17,7 +17,18 @@
       "mcp__figma__download_figma_images",
       "Bash(git init:*)",
       "Bash(git -C \"/Users/mariasokolova/Desktop/Биографика\" status -u)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(grep -E \"\\\\.\\(css|js|html\\)$\")",
+      "Bash(npm list:*)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/84446204-c56e-4cf2-badc-c8523e74bd4a\" -o \"/Users/mariasokolova/Desktop/Биографика/assets/masha-popup.jpg\")",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/adc8c258-18cc-4abb-a470-f6f911cf61d8\" -o \"/Users/mariasokolova/Desktop/Биографика/assets/close-icon.svg\")",
+      "Bash(python3 -c \":*)",
+      "Bash(sips -g pixelHeight -g pixelWidth \"/Users/mariasokolova/Desktop/Биографика/assets/popup.jpg\")",
+      "Bash(git config:*)",
+      "Bash(git sync:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
