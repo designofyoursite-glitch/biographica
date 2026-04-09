@@ -103,6 +103,7 @@ body {
   color: var(--text);
   position: relative;
   z-index: 51;
+  mix-blend-mode: difference;
 }
 
 .iconBtn img {
@@ -182,6 +183,7 @@ body {
   align-items: center;
   transform-origin: left center;
   transition: transform 0.3s ease, filter 0.3s ease;
+  mix-blend-mode: difference;
 }
 
 .siteHeader__logo:hover {
@@ -245,6 +247,7 @@ body {
   transition: color 0.3s ease;
   position: relative;
   z-index: 51;
+  mix-blend-mode: difference;
 }
 
 .soundToggle:hover,
@@ -328,6 +331,7 @@ body {
     line-height: 1.5;
     opacity: 0.35;
     transition: opacity 0.3s;
+    mix-blend-mode: difference;
   }
 
   .sideNav__item:hover {
