@@ -490,7 +490,32 @@
   update();
 })();
 
-/* ===== Parallax — author background ===== */
+/* ===== Parallax — author background (mobile) ===== */
+(() => {
+  const section = document.querySelector(".author");
+  if (!section) return;
+  if (window.innerWidth >= 768) return;
+
+  const baseY = 20; // matches background-position center 20%
+  const speed = 0.15;
+
+  const update = () => {
+    const rect = section.getBoundingClientRect();
+    const viewH = window.innerHeight;
+
+    if (rect.bottom >= 0 && rect.top <= viewH) {
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const shift = baseY + (progress - 0.5) * 30 * speed;
+      section.style.backgroundPositionY = shift.toFixed(2) + "%";
+    }
+  };
+
+  const tick = () => { update(); requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+  update();
+})();
+
+/* ===== Parallax — author background (desktop) ===== */
 (() => {
   const section = document.querySelector(".author");
   const bgImg = document.querySelector(".author__bgImg");

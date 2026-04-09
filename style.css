@@ -1258,26 +1258,16 @@ body {
 
 .author {
   position: relative;
-  background: #212121;
+  background: url('./assets/masha-1.jpg') center 20% / cover no-repeat;
+  background-color: #212121;
   overflow: hidden;
   padding-bottom: 0;
   z-index: 51;
 }
 
-@supports (overflow: clip) {
-  .author {
-    overflow: clip;
-  }
-}
-
-/* Background image + gradient */
+/* Background image + gradient — hidden on mobile, visible on ≥768 */
 .author__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
+  display: none;
 }
 
 .author__bgImg {
@@ -1568,9 +1558,11 @@ body {
     min-height: 100vh;
     z-index: auto;
     padding-bottom: 80px;
+    background: #212121;
   }
 
   .author__bg {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
