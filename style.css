@@ -74,6 +74,11 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  pointer-events: none;
+}
+
+.siteHeader__mobile > * {
+  pointer-events: auto;
 }
 
 .siteHeader__logo--mobile {
@@ -112,8 +117,8 @@ body {
 }
 
 .soundIcon--sm {
-  width: 19px;
-  height: 19px;
+  width: 25px;
+  height: 25px;
 }
 
 .soundIcon--lg {
@@ -228,8 +233,8 @@ body {
 
 .soundToggle {
   justify-self: start;
-  width: 19px;
-  height: 19px;
+  width: 25px;
+  height: 25px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -251,7 +256,6 @@ body {
 .soundToggle:hover .soundIcon,
 .iconBtn.js-soundToggle:hover .soundIcon,
 .hero__soundFloating:hover .soundIcon {
-  transform: scale(1.15);
   opacity: 1;
 }
 
@@ -558,10 +562,10 @@ body {
 }
 
 .hero__soundFloating {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: calc(clamp(15px, 4vw, 20px) + 40px);
-  z-index: 25;
+  z-index: 55;
 }
 
 .hero__content {
@@ -734,7 +738,7 @@ body {
   }
 
   .hero__soundFloating {
-    display: none;
+    display: block;
   }
 
   .hero__title {
@@ -826,6 +830,10 @@ body {
   }
 
   .siteHeader__mobile {
+    display: none;
+  }
+
+  .hero__soundFloating {
     display: none;
   }
 
@@ -2168,8 +2176,8 @@ body {
   color: white;
   white-space: nowrap;
   flex-shrink: 0;
-  width: calc(25% + 7px);
-  text-align: center;
+  width: calc(18% + 0px);
+  text-align: left;
 }
 
 .stages__name {
@@ -2213,7 +2221,8 @@ body {
 
 .stages__body p {
   margin: 0 0 20px;
-  padding-left: calc(25% + 7px);
+  padding-left: calc(18% + 0px);
+  padding-right: 20px;
   font-family: "Montserrat", system-ui, sans-serif;
   font-weight: 500;
   font-size: 11px;
@@ -2453,7 +2462,8 @@ body {
 /* ===== List ===== */
 .result__list {
   margin: 0;
-  padding: 0 0 0 clamp(6px, 0vw, 20px);
+  padding: 0;
+  margin-left: 8px;
   list-style: disc;
   font-family: "Montserrat", system-ui, sans-serif;
   font-weight: 500;
@@ -3586,7 +3596,7 @@ body {
   font-size: 11px;
   line-height: 1.6;
   color: #fff;
-  padding: 0 0 clamp(15px, 2vw, 20px) clamp(40px, 7vw, 60px);
+  padding: 0 20px clamp(15px, 2vw, 20px) clamp(46px, 7vw, 60px);
   max-width: 500px;
 }
 

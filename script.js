@@ -718,6 +718,9 @@
   const charDelayMs = 6;
   let animId = 0;
 
+  // Fix height before animation to prevent layout shift
+  el.style.minHeight = el.offsetHeight + "px";
+
   const typewrite = () => {
     const id = ++animId;
     el.textContent = "";
