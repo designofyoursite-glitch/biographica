@@ -1259,20 +1259,25 @@ body {
 .author {
   position: relative;
   background: #212121;
-  overflow: clip;
+  overflow: hidden;
   padding-bottom: 0;
   z-index: 51;
 }
 
+@supports (overflow: clip) {
+  .author {
+    overflow: clip;
+  }
+}
+
 /* Background image + gradient */
 .author__bg {
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100vh;
-  will-change: transform;
 }
 
 .author__bgImg {
