@@ -20,7 +20,6 @@
 html,
 body {
   height: 100%;
-  min-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -543,8 +542,8 @@ body {
   left: 50%;
   width: 100vw;
   height: 56.25vw;
-  min-width: 177.78dvh;
-  min-height: 100dvh;
+  min-width: 177.78vh;
+  min-height: 100vh;
   transform: translate(-50%, -50%) scale(1.03);
   pointer-events: none;
   border: 0;
@@ -717,9 +716,9 @@ body {
 @media (min-width: 568px) {
   .hero {
     background: #111;
-    height: 100svh;
+    height: 100vh;
     height: 100dvh;
-    min-height: 100svh;
+    min-height: 100vh;
     min-height: 100dvh;
     padding-bottom: 0;
   }
@@ -731,7 +730,7 @@ body {
 
   .hero__content .container {
     padding-top: 0;
-    min-height: 100svh;
+    min-height: 100vh;
     min-height: 100dvh;
     position: relative;
   }
@@ -903,7 +902,7 @@ body {
     width: 100%;
     max-width: none;
     padding: 0;
-    min-height: 100svh;
+    min-height: 100vh;
     min-height: 100dvh;
     position: relative;
   }
@@ -1000,16 +999,11 @@ body {
 
 .about {
   position: relative;
-  background: transparent;
+  background: url(./assets/bg-1.jpg) center / cover no-repeat;
   padding: 60px 0 40px;
   margin-top: -5px;
 }
 
-@supports not (backdrop-filter: blur(1px)) {
-  .about {
-    background: #57524e;
-  }
-}
 
 /* Lead text — always starts from 1st guideline */
 .about__lead {
