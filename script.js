@@ -717,12 +717,26 @@
   const fullText = el.textContent;
   const charDelayMs = 6;
   let animId = 0;
+  let hasPlayed = false;
 
-  // Fix height before animation to prevent layout shift
-  el.style.minHeight = el.offsetHeight + "px";
+  // Fix height after fonts are loaded to prevent layout shift
+  const fixHeight = () => {
+    el.textContent = fullText;
+    el.style.minHeight = el.offsetHeight + "px";
+  };
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fixHeight);
+  } else {
+    window.addEventListener("load", fixHeight);
+  }
 
   const typewrite = () => {
+    if (hasPlayed) return;
+    hasPlayed = true;
     const id = ++animId;
+    // Re-measure after fonts
+    el.style.minHeight = el.offsetHeight + "px";
     el.textContent = "";
     let i = 0;
     const tick = () => {
