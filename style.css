@@ -1257,25 +1257,35 @@ body {
 /* ===== SECTION 3 — AUTHOR ===== */
 
 .author {
+  --author-bg-height: 100svh;
   position: relative;
-  background: url('./assets/masha-1.jpg') center 20% / cover no-repeat;
   background-color: #212121;
-  overflow: hidden;
+  overflow: clip;
   padding-bottom: 0;
   z-index: 51;
 }
 
-/* Background image + gradient — hidden on mobile, visible on ≥768 */
+/* Background image + gradient */
 .author__bg {
-  display: none;
+  display: block;
+  position: sticky;
+  top: 0;
+  height: var(--author-bg-height);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .author__bgImg {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
+  height: 128%;
   object-fit: cover;
   object-position: center 20%;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .author__bgGradient {
@@ -1285,7 +1295,8 @@ body {
 /* Top content block */
 .author__top {
   position: relative;
-  margin-top: -100vh;
+  z-index: 1;
+  margin-top: calc(var(--author-bg-height) * -1);
   padding-top: 280px;
   padding-left: 20px;
   padding-right: 20px;
@@ -1346,6 +1357,7 @@ body {
 /* Bottom content block */
 .author__bottom {
   position: relative;
+  z-index: 1;
   top: auto;
   left: auto;
   text-align: center;
@@ -1382,6 +1394,7 @@ body {
 /* Circles */
 .author__circles {
   position: relative;
+  z-index: 1;
   top: auto;
   left: auto;
   display: flex;
@@ -1554,6 +1567,7 @@ body {
 
 @media (min-width: 768px) {
   .author {
+    --author-bg-height: 100vh;
     height: auto;
     min-height: 100vh;
     z-index: auto;
@@ -1561,18 +1575,8 @@ body {
     background: #212121;
   }
 
-  .author__bg {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    height: auto;
-  }
-
   .author__bgImg {
-    height: 100%;
+    height: 122%;
     object-fit: cover;
     object-position: center top;
   }
@@ -1588,7 +1592,6 @@ body {
 
   .author__top {
     position: relative;
-    margin-top: 0;
     padding-top: 280px;
     padding-left: calc(100vw / 6);
     padding-right: 20px;
@@ -4207,4 +4210,3 @@ body {
     right: 20px;
   }
 }
-

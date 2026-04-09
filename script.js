@@ -2,27 +2,35 @@
 
 (() => {
   const iframe = document.getElementById("heroVideo");
-  const iframePreview = document.getElementById("heroVideoPreview");
+  const previewIframe = document.getElementById("heroVideoPreview");
   const buttons = Array.from(document.querySelectorAll(".js-soundToggle"));
 
-  if (!iframe || buttons.length === 0 || typeof Vimeo === "undefined") return;
+  if (!iframe || !previewIframe || buttons.length === 0 || typeof Vimeo === "undefined") return;
 
-  let players;
+  let bgPlayer;
+  let previewPlayer;
   try {
-    players = [new Vimeo.Player(iframe)];
-    if (iframePreview) players.push(new Vimeo.Player(iframePreview));
+    bgPlayer = new Vimeo.Player(iframe);
+    previewPlayer = new Vimeo.Player(previewIframe);
   } catch (e) {
     console.warn("Vimeo Player init skipped:", e);
     return;
   }
 
-  // Keep background + preview in sync (best-effort).
+  const players = [bgPlayer, previewPlayer];
   const SYNC_THRESHOLD_S = 0.18;
   const SYNC_INTERVAL_MS = 500;
 
   const sync = {
     intervalId: 0,
     running: false,
+  };
+
+  const loop = {
+    activeIndex: 0,
+    duration: 0,
+    monitorId: 0,
+    swapping: false,
   };
 
   const safe = async (fn) => {
@@ -33,40 +41,86 @@
     }
   };
 
+  const applyAudioState = async (muted) => {
+    await Promise.allSettled([
+      safe(() => bgPlayer.setMuted(muted)),
+      safe(() => bgPlayer.setVolume(muted ? 0 : 1)),
+      safe(() => previewPlayer.setMuted(muted)),
+      safe(() => previewPlayer.setVolume(muted ? 0 : 1)),
+    ]);
+
+    if (!muted) {
+      await safe(() => previewPlayer.setMuted(false));
+      await safe(() => previewPlayer.setVolume(1));
+    }
+  };
+
+  const restartPlayer = async (player) => {
+    await safe(() => player.setCurrentTime(0));
+    await safe(() => player.play());
+  };
+
+  const enableLooping = async () => {
+    await Promise.allSettled(players.map((player) => safe(() => player.setLoop(true))));
+  };
+
+  const syncPlayers = async () => {
+    const [tPreview, tBg] = await Promise.all([
+      safe(() => previewPlayer.getCurrentTime()),
+      safe(() => bgPlayer.getCurrentTime()),
+    ]);
+    if (typeof tPreview !== "number" || typeof tBg !== "number") return;
+    const drift = tBg - tPreview;
+    if (Math.abs(drift) > SYNC_THRESHOLD_S) {
+      await safe(() => bgPlayer.setCurrentTime(tPreview));
+    }
+  };
+
   const startSyncIfNeeded = () => {
-    if (players.length < 2 || sync.running) return;
+    if (sync.running) return;
     sync.running = true;
 
-    const master = players[0];
-    const slave = players[1];
-
     const tick = async () => {
-      const [tMaster, tSlave] = await Promise.all([safe(() => master.getCurrentTime()), safe(() => slave.getCurrentTime())]);
-      if (typeof tMaster !== "number" || typeof tSlave !== "number") return;
-      const drift = tSlave - tMaster;
-      if (Math.abs(drift) > SYNC_THRESHOLD_S) {
-        await safe(() => slave.setCurrentTime(tMaster));
-      }
+      await syncPlayers();
     };
 
     sync.intervalId = window.setInterval(tick, SYNC_INTERVAL_MS);
 
-    master.on("play", () => {
-      void safe(() => slave.play());
+    previewPlayer.on("play", () => {
+      void safe(() => bgPlayer.play());
     });
-    master.on("pause", () => {
-      void safe(() => slave.pause());
+    previewPlayer.on("pause", () => {
+      void safe(() => bgPlayer.pause());
+    });
+
+    bgPlayer.on("play", () => {
+      void safe(() => previewPlayer.play());
+    });
+    bgPlayer.on("pause", () => {
+      void safe(() => previewPlayer.pause());
+    });
+
+    players.forEach((player) => {
+      player.on("ended", () => {
+        void restartPlayer(player);
+      });
     });
 
     // Initial alignment after both are ready.
     (async () => {
-      await Promise.all([safe(() => master.ready()), safe(() => slave.ready())]);
-      const t = await safe(() => master.getCurrentTime());
+      await Promise.all([safe(() => bgPlayer.ready()), safe(() => previewPlayer.ready())]);
+      await enableLooping();
+      const t = await safe(() => bgPlayer.getCurrentTime());
       if (typeof t === "number") {
-        await safe(() => slave.setCurrentTime(t));
+        await safe(() => previewPlayer.setCurrentTime(t));
       }
-      const paused = await safe(() => master.getPaused());
-      if (paused === false) void safe(() => slave.play());
+      const paused = await safe(() => bgPlayer.getPaused());
+      if (paused === false) {
+        void safe(() => previewPlayer.play());
+      } else {
+        void restartPlayer(bgPlayer);
+        void restartPlayer(previewPlayer);
+      }
     })();
   };
 
@@ -78,17 +132,9 @@
     }
   };
 
-  const setMutedAll = async (muted) => {
-    await Promise.allSettled(players.map((p) => p.setMuted(muted)));
-  };
-
-  const setVolumeAll = async (vol) => {
-    await Promise.allSettled(players.map((p) => p.setVolume(vol)));
-  };
-
   const ensureMuted = async () => {
     try {
-      await setMutedAll(true);
+      await applyAudioState(true);
       setUiMuted(true);
     } catch {
       setUiMuted(true);
@@ -97,9 +143,9 @@
 
   ensureMuted();
 
-  players[0].on("loaded", async () => {
+  bgPlayer.on("loaded", async () => {
     try {
-      const muted = await players[0].getMuted();
+      const muted = await bgPlayer.getMuted();
       setUiMuted(muted);
     } catch {
       setUiMuted(true);
@@ -107,17 +153,16 @@
   });
 
   // Start sync once the first player is loaded.
-  players[0].on("loaded", startSyncIfNeeded);
+  bgPlayer.on("loaded", startSyncIfNeeded);
 
   const toggle = async () => {
     try {
-      const muted = await players[0].getMuted();
+      const muted = await bgPlayer.getMuted();
       if (muted) {
-        await setMutedAll(false);
-        await setVolumeAll(1);
+        await applyAudioState(false);
         setUiMuted(false);
       } else {
-        await setMutedAll(true);
+        await applyAudioState(true);
         setUiMuted(true);
       }
     } catch {
@@ -515,26 +560,27 @@
   update();
 })();
 
-/* ===== Parallax — author background (desktop) ===== */
+/* ===== Parallax — author background ===== */
 (() => {
   const section = document.querySelector(".author");
+  const bg = document.querySelector(".author__bg");
   const bgImg = document.querySelector(".author__bgImg");
-  if (!section || !bgImg) return;
-  if (window.innerWidth < 768) return;
+  if (!section || !bg || !bgImg) return;
+  let prevShift = null;
 
-  const speed = 1.25;
-  let prevShift = "";
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   const update = () => {
     const rect = section.getBoundingClientRect();
     const viewH = window.innerHeight;
+    const travel = Math.max(0, bgImg.offsetHeight - bg.offsetHeight);
 
     if (rect.bottom >= 0 && rect.top <= viewH) {
-      const progress = (viewH - rect.top) / (viewH + rect.height);
-      const shift = ((progress - 0.5) * 20 * speed).toFixed(3);
+      const progress = clamp((viewH - rect.top) / (viewH + rect.height), 0, 1);
+      const shift = (-travel * progress).toFixed(2);
 
       if (shift !== prevShift) {
-        bgImg.style.transform = "translateY(" + shift + "%)";
+        bgImg.style.transform = "translate3d(0, " + shift + "px, 0)";
         prevShift = shift;
       }
     }
