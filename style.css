@@ -1028,7 +1028,6 @@ body {
 .about__scrollWrap {
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   margin-top: 40px;
 }

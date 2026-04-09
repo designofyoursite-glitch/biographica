@@ -714,33 +714,18 @@
   const el = document.querySelector(".about__lead");
   if (!el) return;
 
-  const fullText = el.textContent;
+  const fullText = el.textContent.trim();
   const charDelayMs = 6;
-  let animId = 0;
   let hasPlayed = false;
-
-  // Fix height after fonts are loaded to prevent layout shift
-  const fixHeight = () => {
-    el.textContent = fullText;
-    el.style.minHeight = el.offsetHeight + "px";
-  };
-
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(fixHeight);
-  } else {
-    window.addEventListener("load", fixHeight);
-  }
 
   const typewrite = () => {
     if (hasPlayed) return;
     hasPlayed = true;
-    const id = ++animId;
-    // Re-measure after fonts
+    // Lock height before clearing text
     el.style.minHeight = el.offsetHeight + "px";
     el.textContent = "";
     let i = 0;
     const tick = () => {
-      if (id !== animId) return;
       if (i < fullText.length) {
         el.textContent += fullText[i];
         i++;
@@ -756,7 +741,7 @@
         typewrite();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
 
   observer.observe(el);
 })();
