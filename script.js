@@ -538,34 +538,11 @@
 /* ===== Parallax — author background (mobile) ===== */
 (() => {
   const section = document.querySelector(".author");
-  if (!section) return;
-  if (window.innerWidth >= 768) return;
-
-  const baseY = 20; // matches background-position center 20%
-  const speed = 0.15;
-
-  const update = () => {
-    const rect = section.getBoundingClientRect();
-    const viewH = window.innerHeight;
-
-    if (rect.bottom >= 0 && rect.top <= viewH) {
-      const progress = (viewH - rect.top) / (viewH + rect.height);
-      const shift = baseY + (progress - 0.5) * 30 * speed;
-      section.style.backgroundPositionY = shift.toFixed(2) + "%";
-    }
-  };
-
-  const tick = () => { update(); requestAnimationFrame(tick); };
-  requestAnimationFrame(tick);
-  update();
-})();
-
-/* ===== Parallax — author background ===== */
-(() => {
-  const section = document.querySelector(".author");
   const bg = document.querySelector(".author__bg");
   const bgImg = document.querySelector(".author__bgImg");
   if (!section || !bg || !bgImg) return;
+  if (window.innerWidth >= 768) return;
+
   let prevShift = null;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -581,6 +558,37 @@
 
       if (shift !== prevShift) {
         bgImg.style.transform = "translate3d(0, " + shift + "px, 0)";
+        prevShift = shift;
+      }
+    }
+  };
+
+  const tick2 = () => { update(); requestAnimationFrame(tick2); };
+  requestAnimationFrame(tick2);
+  setInterval(update, 50);
+  update();
+})();
+
+/* ===== Parallax — author background (desktop) ===== */
+(() => {
+  const section = document.querySelector(".author");
+  const bgImg = document.querySelector(".author__bgImg");
+  if (!section || !bgImg) return;
+  if (window.innerWidth < 768) return;
+
+  const speed = 1.25;
+  let prevShift = "";
+
+  const update = () => {
+    const rect = section.getBoundingClientRect();
+    const viewH = window.innerHeight;
+
+    if (rect.bottom >= 0 && rect.top <= viewH) {
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const shift = ((progress - 0.5) * 20 * speed).toFixed(3);
+
+      if (shift !== prevShift) {
+        bgImg.style.transform = "translateY(" + shift + "%)";
         prevShift = shift;
       }
     }
@@ -704,28 +712,25 @@
   update();
 })();
 
-/* ===== Hide side nav when footer is visible ===== */
+/* ===== Side nav footer stop space ===== */
 (() => {
   const nav = document.querySelector(".sideNav");
   const footer = document.querySelector(".footer");
   if (!nav || !footer) return;
 
-  const check = () => {
-    const footerRect = footer.getBoundingClientRect();
-    const viewH = window.innerHeight;
-    if (footerRect.top < viewH) {
-      nav.style.opacity = "0";
-      nav.style.pointerEvents = "none";
-    } else {
-      nav.style.opacity = "1";
-      nav.style.pointerEvents = "";
+  const update = () => {
+    if (window.innerWidth < 1200) {
+      footer.style.removeProperty("--side-nav-stop-space");
+      return;
     }
+
+    const stopSpace = nav.offsetHeight + 60;
+    footer.style.setProperty("--side-nav-stop-space", stopSpace + "px");
   };
 
-  nav.style.transition = "opacity 0.3s ease";
-  const tick5 = () => { check(); requestAnimationFrame(tick5); };
-  requestAnimationFrame(tick5);
-  check();
+  window.addEventListener("resize", update);
+  window.addEventListener("load", update);
+  update();
 })();
 
 /* ===== Contacts decor — trigger draw animation on scroll ===== */
@@ -780,41 +785,49 @@
   update();
 })();
 
-/* ===== Typewriter — about__lead ===== */
+/* ===== Typewriter — text blocks ===== */
 (() => {
-  const el = document.querySelector(".about__lead");
-  if (!el) return;
+  const elements = Array.from(document.querySelectorAll(".about__lead, .js-typewriter"));
+  if (!elements.length) return;
 
-  const fullText = el.textContent.trim();
-  const charDelayMs = 6;
-  let hasPlayed = false;
+  const charDelayMs = 12;
 
-  const typewrite = () => {
-    if (hasPlayed) return;
-    hasPlayed = true;
-    // Lock height before clearing text
+  const typewrite = (el, delayMs = 0) => {
+    if (el.dataset.typewriterPlayed === "true") return;
+    el.dataset.typewriterPlayed = "true";
+
+    const fullText = el.textContent.trim();
+    const charDelay = Number(el.dataset.typewriterSpeed || charDelayMs);
     el.style.minHeight = el.offsetHeight + "px";
     el.textContent = "";
-    let i = 0;
-    const tick = () => {
-      if (i < fullText.length) {
-        el.textContent += fullText[i];
-        i++;
-        setTimeout(tick, charDelayMs);
-      }
-    };
-    tick();
+
+    window.setTimeout(() => {
+      let i = 0;
+      const tick = () => {
+        if (i < fullText.length) {
+          el.textContent += fullText[i];
+          i++;
+          setTimeout(tick, charDelay);
+        }
+      };
+      tick();
+    }, delayMs);
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        typewrite();
+        const el = entry.target;
+        const list = el.closest(".result__list");
+        const siblings = list ? Array.from(list.querySelectorAll(".js-typewriter")) : [];
+        const delayMs = siblings.length ? siblings.indexOf(el) * 120 : 0;
+        typewrite(el, delayMs);
+        observer.unobserve(el);
       }
     });
   }, { threshold: 0.2 });
 
-  observer.observe(el);
+  elements.forEach((el) => observer.observe(el));
 })();
 
 /* ===== About Slider — popup open/close ===== */
